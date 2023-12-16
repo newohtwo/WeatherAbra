@@ -1,0 +1,18 @@
+#root{
+  background-color: aqua;
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  background-color: green;
+  height: 100%;
+  width: 100%;
+}
+
+
+html{
+  background-color: red;
+  height: 100%;
+  width: 100%;
+}
