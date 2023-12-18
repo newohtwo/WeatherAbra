@@ -15,7 +15,7 @@ const Home = (props) => {
     console.log(key, name);
     data.key = key;
     data.name = name;
-    //
+    //testtt
     setWeatherData((old) => old);
   };
 
