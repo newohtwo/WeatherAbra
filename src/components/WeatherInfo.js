@@ -1,9 +1,10 @@
 const WeatherInfo = (props) => {
+  console.log(props);
   return (
     <div className="border">
       <div className="">
         <div className="d-flex justify-content-between">
-          <div>TEL AVIV</div>
+          <div>{props.weatherData.name}</div>
           <div> HEART AND ADD TO FAVORITES</div>
         </div>
       </div>
