@@ -3,7 +3,7 @@ import Search from "../../components/Search";
 import WeatherInfo from "../../components/WeatherInfo";
 
 const Home = (props) => {
-  const [weatherData, setWeatherData] = useState({ key: 0, name: "" });
+  const [weatherData, setWeatherData] = useState({ key: null, name: null });
 
   useEffect(() => {
     //if has some quary data with key than make api call and set data to weather info
@@ -15,8 +15,11 @@ const Home = (props) => {
     console.log(key, name);
     data.key = key;
     data.name = name;
-    //testtt
-    setWeatherData((old) => old);
+
+    //make here api call and fill the needed data into the state
+    setWeatherData((old) => {
+      return { ...old, key: data.key, name: data.name };
+    });
   };
 
   return (
@@ -25,7 +28,7 @@ const Home = (props) => {
         <Search getWeatherKey={getWeatherKey} />
       </div>
       <div className="weather-content container-fluid p-0 m-0">
-        {weatherData && <WeatherInfo />}
+        {weatherData.key && <WeatherInfo weatherData={weatherData} />}
       </div>
     </div>
   );
