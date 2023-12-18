@@ -9,12 +9,8 @@ export const Favorites = () => {
   }, []);
 
   return (
-    <div className="container-fluid container-sm">
-      <div>
-        Your favorite weather areas!
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </div>
-      <div className="d-inline-flex justify-content-center">
+    <div className="container-fluid">
+      <div className="d-flex justify-content-center flex-wrap">
         <FavoriteWeatherBlock />
         <FavoriteWeatherBlock />
         <FavoriteWeatherBlock />
