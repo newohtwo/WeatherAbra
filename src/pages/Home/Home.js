@@ -3,7 +3,11 @@ import Search from "../../components/Search";
 import WeatherInfo from "../../components/WeatherInfo";
 
 const Home = (props) => {
-  const [weatherData, setWeatherData] = useState({ key: null, name: null });
+  const [weatherData, setWeatherData] = useState({
+    key: null,
+    name: null,
+    isFavorite: false,
+  });
 
   useEffect(() => {
     //if has some quary data with key than make api call and set data to weather info
@@ -18,8 +22,29 @@ const Home = (props) => {
 
     //make here api call and fill the needed data into the state
     setWeatherData((old) => {
-      return { ...old, key: data.key, name: data.name };
+      return {
+        ...old,
+        key: data.key,
+        name: data.name,
+        isFavorite: checkIfExistsInStorage(),
+      };
     });
+  };
+
+  const checkIfExistsInStorage = (key) => {
+    const storedFavoriteWeathersString =
+      localStorage.getItem("favoriteWeathers");
+    const storedFavoriteWeathersArray = JSON.parse(
+      storedFavoriteWeathersString
+    );
+    const exists = storedFavoriteWeathersArray.some((obj) =>
+      Object.values(obj).includes(key)
+    );
+    if (exists) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   return (

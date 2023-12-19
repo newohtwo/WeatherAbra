@@ -1,11 +1,17 @@
 const WeatherInfo = (props) => {
-  console.log(props);
   return (
     <div className="border">
       <div className="">
         <div className="d-flex justify-content-between">
           <div>{props.weatherData.name}</div>
-          <div> HEART AND ADD TO FAVORITES</div>
+          <div className="d-flex align-self-center">
+            <img
+              style={{ width: "20px" }}
+              src="/assets/heart_not_active.svg"
+              className=""
+            ></img>
+            <button className="m-2">add to favorites</button>
+          </div>
         </div>
       </div>
       <div className="">SCATTERD CLOUDS</div>
