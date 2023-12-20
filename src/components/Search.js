@@ -1,10 +1,10 @@
-import { createRef, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { searchData } from "../demoData/DemoData";
 const Search = () => {
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropDownOptions, setDropDownOptions] = useState([]);
-  const inputRefrence = useRef();
+  const inputReference = useRef();
 
   const handleInputChange = (event) => {
     console.log(event);
@@ -34,9 +34,9 @@ const Search = () => {
     // Add your logic for handling dropdown item click
     console.log(`Clicked on ${item}`);
     setShowDropdown(false);
-    if (inputRefrence !== undefined) {
+    if (inputReference !== undefined) {
       // @ts-ignore
-      inputRefrence.current.value = "";
+      inputReference.current.value = "";
     }
   };
 
@@ -49,7 +49,7 @@ const Search = () => {
         onChange={handleInputChange}
         onFocus={() => setShowDropdown(true)}
         onBlur={() => setShowDropdown(false)}
-        ref={inputRefrence}
+        ref={inputReference}
       />
       {showDropdown && (
         <ul

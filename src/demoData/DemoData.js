@@ -548,7 +548,7 @@ export const getWeatherData = [
 ];
 
 //http://dataservice.accuweather.com/forecasts/v1/daily/5day/215854?apikey=guAZ6YEi30wJfGoJ8IBmXCC7WreCZ6LV
-export const getWeatherForcastFiveDays = {
+export const getWeatherForecastFiveDays = {
   Headline: {
     EffectiveDate: "2023-12-17T19:00:00+02:00",
     EffectiveEpochDate: 1702832400,
