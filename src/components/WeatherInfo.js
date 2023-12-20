@@ -1,9 +1,9 @@
-const WeatherInfo = (props) => {
+const WeatherInfo = ({ weatherData }) => {
   return (
     <div className="border">
       <div className="">
         <div className="d-flex justify-content-between">
-          <div>{props.weatherData.name}</div>
+          <div>{weatherData.name}</div>
           <div className="d-flex align-self-center">
             <img
               style={{ width: "20px" }}
