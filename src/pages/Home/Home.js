@@ -37,13 +37,15 @@ const Home = (props) => {
     const storedFavoriteWeathersArray = JSON.parse(
       storedFavoriteWeathersString
     );
-    const exists = storedFavoriteWeathersArray.some((obj) =>
-      Object.values(obj).includes(key)
-    );
-    if (exists) {
-      return true;
-    } else {
-      return false;
+    if (storedFavoriteWeathersArray !== null) {
+      const exists = storedFavoriteWeathersArray.some((obj) =>
+        Object.values(obj).includes(key)
+      );
+      if (exists) {
+        return true;
+      } else {
+        return false;
+      }
     }
   };
 
