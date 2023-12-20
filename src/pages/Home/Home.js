@@ -24,8 +24,8 @@ const Home = (props) => {
     setWeatherData((old) => {
       return {
         ...old,
-        key: data.key,
-        name: data.name,
+        key: key,
+        name: name,
         isFavorite: checkIfExistsInStorage(),
       };
     });
@@ -43,8 +43,6 @@ const Home = (props) => {
       );
       if (exists) {
         return true;
-      } else {
-        return false;
       }
     }
   };
