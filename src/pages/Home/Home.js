@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Search from "../../components/Search";
+import Search from "../../components/Search.js";
 import WeatherInfo from "../../components/WeatherInfo";
 
 const Home = (props) => {

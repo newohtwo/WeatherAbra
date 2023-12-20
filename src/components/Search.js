@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { searchData } from "../demoData/DemoData";
-const Search = () => {
+const Search = ({ getWeatherKey }) => {
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropDownOptions, setDropDownOptions] = useState([]);
@@ -14,7 +14,10 @@ const Search = () => {
     if (value !== "") {
       const arr = searchData.map((x) => {
         return (
-          <li key={x.Key} onClick={() => handleDropdownItemClick(x.Key)}>
+          <li
+            key={x.Key}
+            onClick={() => handleDropdownItemClick(x.Key, x.LocalizedName)}
+          >
             <span style={{ width: "100%" }}>
               {x.LocalizedName + ", " + x.Country.LocalizedName}
             </span>
@@ -30,7 +33,7 @@ const Search = () => {
     setShowDropdown(true);
   };
 
-  const handleDropdownItemClick = (item) => {
+  const handleDropdownItemClick = (item, name) => {
     // Add your logic for handling dropdown item click
     console.log(`Clicked on ${item}`);
     setShowDropdown(false);
@@ -38,6 +41,7 @@ const Search = () => {
       // @ts-ignore
       inputReference.current.value = "";
     }
+    getWeatherKey(item, name);
   };
 
   return (
