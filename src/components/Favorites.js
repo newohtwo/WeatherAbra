@@ -14,14 +14,19 @@ export const Favorites = () => {
   }, []);
 
   console.log(favoriteWeathers);
-  console.log('Favorite weathers is over here!');
+  console.log("Favorite weathers is over here!");
   console.log(favoriteForecast);
-  console.log('Favorite forecast is over here!');
+  console.log("Favorite forecast is over here!");
 
   const favoriteWeathersBlock = () => {
     return favoriteWeathers.map((favoriteWeather, favoriteForecast) => {
-      return <FavoriteWeatherBlock favoriteWeather = {favoriteWeather} favoriteForecast={favoriteForecast}/>
-    })
+      return (
+        <FavoriteWeatherBlock
+          favoriteWeather={favoriteWeather}
+          favoriteForecast={favoriteForecast}
+        />
+      );
+    });
   };
 
   return (
