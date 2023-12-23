@@ -13,11 +13,6 @@ export const Favorites = () => {
     setFavoriteForecast(JSON.parse(localStorage.getItem("favoriteForecast")));
   }, []);
 
-  console.log(favoriteWeathers);
-  console.log("Favorite weathers is over here!");
-  console.log(favoriteForecast);
-  console.log("Favorite forecast is over here!");
-
   const favoriteWeathersBlock = () => {
     return favoriteWeathers.map((favoriteWeather, favoriteForecast) => {
       return (

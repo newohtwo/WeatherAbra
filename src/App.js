@@ -6,12 +6,12 @@ import { searchData, getWeatherForecastFiveDays } from "./demoData/DemoData";
 
 const App = () => {
   // Convert the array of objects to a JSON string
-  const favoriteWeathersString = JSON.stringify(searchData);
-  // const favoriteForecastString = JSON.stringify(getWeatherForecastFiveDays);
+  // const favoriteWeathersString = JSON.stringify(searchData);
+  // // const favoriteForecastString = JSON.stringify(getWeatherForecastFiveDays);
 
-  // Store the JSON string in local storage
-  localStorage.setItem("favoriteWeathers", favoriteWeathersString);
-  // localStorage.setItem("favoriteForecast", favoriteForecastString);
+  // // Store the JSON string in local storage
+  // localStorage.setItem("favoriteWeathers", favoriteWeathersString);
+  // // localStorage.setItem("favoriteForecast", favoriteForecastString);
 
   return (
     <>
