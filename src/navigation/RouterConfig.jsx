@@ -8,6 +8,7 @@ export const RouterConfig = () => {
     <div>
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/:favoriteKey/:favoriteName" element={<Home />}></Route>
         <Route path="*" element={<NotFound />}></Route>
         <Route path="/favorites" element={<Favorites />}></Route>
       </Routes>
