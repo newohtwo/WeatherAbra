@@ -7,7 +7,6 @@ const Search = ({ getWeatherKey }) => {
   const inputReference = useRef();
 
   const handleInputChange = (event) => {
-    console.log(event);
     let value = event.target.value;
 
     //should check for special cherecters and such
@@ -34,8 +33,6 @@ const Search = ({ getWeatherKey }) => {
   };
 
   const handleDropdownItemClick = (item, name) => {
-    // Add your logic for handling dropdown item click
-    console.log(`Clicked on ${item}`);
     setShowDropdown(false);
     if (inputReference !== undefined) {
       // @ts-ignore

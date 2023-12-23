@@ -1,6 +1,6 @@
 // @ts-ignore
 import { Route, Routes } from "react-router-dom";
-import NotFound from "../pages/NotFound";
+import NotFound from "../pages/NotFound.";
 import Home from "../pages/Home/Home";
 import { Favorites } from "../components/Favorites";
 export const RouterConfig = () => {

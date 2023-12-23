@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Search from "../../components/Search.js";
-import WeatherInfo from "../../components/WeatherInfo";
+import Search from "../../components/Search.jsx";
+import WeatherInfo from "../../components/WeatherInfo.jsx";
 import {
   getWeatherDataByKey,
   getWeatherForecastData,
-} from "../../services/accuweather.js";
+} from "../../services/AccuWeather.js";
 import {
   getWeatherForecastFiveDays,
   getWeatherData,
@@ -15,6 +15,8 @@ const Home = (props) => {
     key: null,
     name: null,
     isFavorite: false,
+    weather: null,
+    weatherForcastFiveDaysArr: null,
   });
 
   useEffect(() => {
@@ -28,16 +30,18 @@ const Home = (props) => {
     // const weatherData = getWeatherData; //api call to get weather
     // const weatherDataFiveDay = getWeatherForecastFiveDays; //api call to get forcast of that weather
     // const { currentWeather, fiveDayForecast } = await getWeatherData(key);
-
+  
+    data.weather = getWeatherData[0];
+    data.weatherForcastFiveDaysArr = getWeatherForecastFiveDays.DailyForecasts;
     data.key = key;
     data.name = name;
+
+    console.log(data);
 
     //make here api call and fill the needed data into the state
     setWeatherData((old) => {
       return {
-        ...old,
-        key: key,
-        name: name,
+        ...data,
         isFavorite: checkIfExistsInStorage(),
       };
     });
@@ -49,14 +53,14 @@ const Home = (props) => {
     const storedFavoriteWeathersArray = JSON.parse(
       storedFavoriteWeathersString
     );
+
     if (storedFavoriteWeathersArray !== null) {
-      const exists = storedFavoriteWeathersArray.some((obj) =>
+      return storedFavoriteWeathersArray.some((obj) =>
         Object.values(obj).includes(key)
       );
-      if (exists) {
-        return true;
-      }
     }
+
+    return false;
   };
 
   return (
