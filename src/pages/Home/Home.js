@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import Search from "../../components/Search.js";
 import WeatherInfo from "../../components/WeatherInfo";
 import {
-  getWeatherData,
+  getWeatherDataByKey,
   getWeatherForecastData,
 } from "../../services/accuweather.js";
-import { getWeatherForecastFiveDays } from "../../demoData/DemoData.js";
+import {
+  getWeatherForecastFiveDays,
+  getWeatherData,
+} from "../../demoData/DemoData.js";
 
 const Home = (props) => {
   const [weatherData, setWeatherData] = useState({
@@ -24,9 +27,8 @@ const Home = (props) => {
     // const test = await getWeatherData();
     // const weatherData = getWeatherData; //api call to get weather
     // const weatherDataFiveDay = getWeatherForecastFiveDays; //api call to get forcast of that weather
-    const { currentWeather, fiveDayForecast } = await getWeatherData(key);
-    console.log("here api call");
-    console.log(currentWeather, fiveDayForecast);
+    // const { currentWeather, fiveDayForecast } = await getWeatherData(key);
+
     data.key = key;
     data.name = name;
 
