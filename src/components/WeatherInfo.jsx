@@ -4,9 +4,9 @@ import { v4 as uuid4 } from "uuid";
 const WeatherInfo = ({ weatherData }) => {
   const { weather, weatherForcastFiveDaysArr, key, name, isFavorite } =
     weatherData;
-  console.log("Here is weather data:")
-  console.log(weatherData);
-  console.log("Weather data over")
+  // console.log("Here is weather data:")
+  // console.log(weatherData);
+  // console.log("Weather data over")
 
   return (
     <div className="border">
@@ -29,7 +29,7 @@ const WeatherInfo = ({ weatherData }) => {
                 className=""
               />
             )}
-            <button className="m-2">add to favorites</button>
+            <button className="m-2">Add to favorites</button>
           </div>
         </div>
       </div>
