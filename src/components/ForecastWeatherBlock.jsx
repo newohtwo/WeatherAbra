@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useDispatch, useSelector } from "react-redux";
 import { changeToF, changeToC } from "../Redux/Actions/DegreesActions";
 import { useEffect, useState } from "react";
@@ -24,6 +25,7 @@ const ForecastWeatherBlock = ({ dailyForecast }) => {
   }, [degreesUnit]);
 
   return (
+    <li>
     <div className="card m-2 p-2 card-body d-inline-flex justify-content">
       {/* <h2>{favoriteWeather.Key}</h2> */}
       <h2 className="card-title">Min degrees: {minDegrees}{ degreesUnit ? '°C' : '°F'}</h2>
@@ -33,6 +35,7 @@ const ForecastWeatherBlock = ({ dailyForecast }) => {
 
       </div>
     </div>
+    </li>
   );
 };
 

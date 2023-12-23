@@ -1,4 +1,5 @@
 import ForecastWeatherBlock from "./ForecastWeatherBlock";
+import { v4 as uuidv4 } from 'uuid';
 
 const WeatherInfo = ({ weatherData }) => {
   const { weather,weatherForcastFiveDaysArr,key,name,isFavorite } = weatherData;
@@ -28,9 +29,10 @@ const WeatherInfo = ({ weatherData }) => {
       </div>
       <div className="">{weather.WeatherText}</div>
       <div className="">
-        <ul>
+        <ul className="d-flex flex-wrap">
         {weatherForcastFiveDaysArr.map((data) => {
-          return (<ForecastWeatherBlock dailyForecast = {data}/>)
+          const randomKey = uuidv4();
+          return (<ForecastWeatherBlock key = {randomKey} dailyForecast = {data}/>)
         })}
         </ul>
       </div>

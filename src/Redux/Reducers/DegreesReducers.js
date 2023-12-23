@@ -1,5 +1,5 @@
 export const initialDegreesState = {
-  degrees: true
+  degrees: true,
 };
 
 // create the reducer
@@ -12,6 +12,6 @@ export const toggleReducer = (state = initialDegreesState, action) => {
       return { ...state, degrees: false };
 
     default:
-        return state;
+      return state;
   }
 };

@@ -1,6 +1,9 @@
+import {useDispatch, useSelector } from "react-redux";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import "./Layout.css";
+import { changeToC, changeToF } from "../../Redux/Actions/DegreesActions";
+
 
 const Layout = ({ children }) => {
   return (
