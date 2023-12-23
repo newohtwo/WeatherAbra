@@ -2,16 +2,16 @@ import Layout from "./components/Layout/Layout";
 import { RouterConfig } from "./navigation/RouterConfig";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { searchData, getWeatherForecastFiveDays } from "./demoData/DemoData";
+import { searchData, getWeatherData } from "./demoData/DemoData";
 
 const App = () => {
   // Convert the array of objects to a JSON string
   const favoriteWeathersString = JSON.stringify(searchData);
-  // const favoriteForecastString = JSON.stringify(getWeatherForecastFiveDays);
+  const favoriteWeathersTemperatureString = JSON.stringify(getWeatherData);
 
   // Store the JSON string in local storage
   localStorage.setItem("favoriteWeathers", favoriteWeathersString);
-  // localStorage.setItem("favoriteForecast", favoriteForecastString);
+  localStorage.setItem("favoriteWeathersTemperature", favoriteWeathersTemperatureString);
 
   return (
     <>

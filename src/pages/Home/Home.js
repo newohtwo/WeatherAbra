@@ -3,14 +3,16 @@ import Search from "../../components/Search.js";
 import WeatherInfo from "../../components/WeatherInfo";
 
 const Home = (props) => {
+  
   const [weatherData, setWeatherData] = useState({
     key: null,
     name: null,
     isFavorite: false,
+    forecast: [],
   });
 
   useEffect(() => {
-    //if has some quary data with key than make api call and set data to weather info
+    //if has some query data with key than make api call and set data to weather info
   }, []);
 
   const getWeatherKey = (key, name) => {
