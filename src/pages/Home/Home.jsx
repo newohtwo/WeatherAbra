@@ -4,14 +4,10 @@ import WeatherInfo from "../../components/WeatherInfo.jsx";
 import {
   getWeatherDataByKey,
   getWeatherForecastData,
-// @ts-ignore
+  // @ts-ignore
 } from "../../services/AccuWeather.js";
-// import {
-//   getWeatherForecastFiveDays,
-//   getWeatherData,
-// } from "../../demoData/DemoData.js";
 // @ts-ignore
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 const Home = (props) => {
   const [weatherData, setWeatherData] = useState({
@@ -21,32 +17,35 @@ const Home = (props) => {
     weather: null,
     weatherForecastFiveDaysArr: null,
   });
-  const { favoriteKey , favoriteName } = useParams();
+  const { favoriteKey, favoriteName } = useParams();
 
   useEffect(() => {
-    console.log(favoriteKey,favoriteName)
-    checkUrlParamsFavoriteWeather(favoriteKey,favoriteName)
+    console.log(favoriteKey, favoriteName);
+    checkUrlParamsFavoriteWeather(favoriteKey, favoriteName);
   }, []);
 
-  const checkUrlParamsFavoriteWeather = async (key,name) => {
-    if(favoriteKey !== null){
-      // const { currentWeather, fiveDayForecast } = await getWeatherData(key);
+  const checkUrlParamsFavoriteWeather = async (key, name) => {
+    if (favoriteKey !== undefined) {
+      const { currentWeather, fiveDayForecast } = await getWeatherDataByKey(
+        key
+      );
 
-      // let data = {};
-      // data.weather = getWeatherData[0];
-      // data.weatherForcastFiveDaysArr = getWeatherForecastFiveDays.DailyForecasts;
-      // data.key = key;
-      // data.name = name;
-  
-      // //make here api call and fill the needed data into the state
-      // setWeatherData((old) => {
-      //   return {
-      //     ...data,
-      //     isFavorite: checkIfExistsInStorage(key),
-      //   };
-      // });
+      let data = {};
+      data.weather = currentWeather[0];
+      data.weatherForcastFiveDaysArr =
+        fiveDayForecast.DailyForecasts;
+      data.key = key;
+      data.name = name;
+
+      //make here api call and fill the needed data into the state
+      setWeatherData((old) => {
+        return {
+          ...data,
+          isFavorite: checkIfExistsInStorage(key),
+        };
+      });
     }
-  }
+  };
   const getWeatherKey = async (key, name) => {
     // make api call using the key
     let data = {};
@@ -54,8 +53,8 @@ const Home = (props) => {
     // const weatherData = getWeatherData; //api call to get weather
     // const weatherDataFiveDay = getWeatherForecastFiveDays; //api call to get forcast of that weather
     const { currentWeather, fiveDayForecast } = await getWeatherDataByKey(key);
-    console.log(currentWeather)
-    console.log(fiveDayForecast)
+    console.log(currentWeather);
+    console.log(fiveDayForecast);
     data.weather = currentWeather[0];
     data.weatherForcastFiveDaysArr = fiveDayForecast.DailyForecasts;
 
