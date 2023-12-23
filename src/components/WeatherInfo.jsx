@@ -4,6 +4,27 @@ import { v4 as uuidv4 } from 'uuid';
 const WeatherInfo = ({ weatherData }) => {
   const { weather,weatherForcastFiveDaysArr,key,name,isFavorite } = weatherData;
   console.log(weatherForcastFiveDaysArr)
+
+  const addToFavorites = () => {
+    const data = {
+      key: key,
+      name: name,
+      weather: weather.WeatherText,
+      lastKnownFahrenheit:weather.Temperature.Imperial.Value,
+    }
+
+    const storedFavoriteWeathersString = localStorage.getItem("favoriteWeathers");
+    let storedFavoriteWeathersArray = JSON.parse(storedFavoriteWeathersString);
+    if(storedFavoriteWeathersArray === null){
+      storedFavoriteWeathersArray = [];
+    }
+    storedFavoriteWeathersArray.push(data);
+    const favoriteWeathersString = JSON.stringify(storedFavoriteWeathersArray);
+    localStorage.setItem("favoriteWeathers", favoriteWeathersString);
+    
+  }
+
+
   return (
     <div className="border">
       <div className="">
@@ -14,16 +35,16 @@ const WeatherInfo = ({ weatherData }) => {
               <img
                 style={{ width: "20px" }}
                 src="/assets/heart_active.svg"
-                className=""
+                
               />
             ) : (
               <img
                 style={{ width: "20px" }}
                 src="/assets/heart_not_active.svg"
-                className=""
+               
               />
             )}
-            <button className="m-2">add to favorites</button>
+            <button onClick={addToFavorites} className="m-2">add to favorites</button>
           </div>
         </div>
       </div>

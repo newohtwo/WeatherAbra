@@ -4,6 +4,7 @@ import WeatherInfo from "../../components/WeatherInfo.jsx";
 import {
   getWeatherDataByKey,
   getWeatherForecastData,
+// @ts-ignore
 } from "../../services/AccuWeather.js";
 import {
   getWeatherForecastFiveDays,

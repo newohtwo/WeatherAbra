@@ -17,6 +17,7 @@ const Navbar = () => {
       dispatch(changeToC())
     }
   }
+
   return (
     <div className="d-flex justify-content-between px-1">
       <div className="align-self-center">
@@ -25,7 +26,6 @@ const Navbar = () => {
 
       <div>
         <button onClick={changeDegrees}>{degreesUnit ? "C*" : "F*"}</button>
-
       </div>
 
       <div className="align-self-center">
