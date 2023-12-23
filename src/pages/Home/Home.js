@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import Search from "../../components/Search.js";
 import WeatherInfo from "../../components/WeatherInfo";
+import {
+  getWeatherData,
+  getWeatherForecastData,
+} from "../../services/accuweather.js";
+import { getWeatherForecastFiveDays } from "../../demoData/DemoData.js";
 
 const Home = (props) => {
   const [weatherData, setWeatherData] = useState({
@@ -13,10 +18,15 @@ const Home = (props) => {
     //if has some quary data with key than make api call and set data to weather info
   }, []);
 
-  const getWeatherKey = (key, name) => {
+  const getWeatherKey = async (key, name) => {
     // make api call using the key
     let data = {};
-    console.log(key, name);
+    // const test = await getWeatherData();
+    // const weatherData = getWeatherData; //api call to get weather
+    // const weatherDataFiveDay = getWeatherForecastFiveDays; //api call to get forcast of that weather
+    const { currentWeather, fiveDayForecast } = await getWeatherData(key);
+    console.log("here api call");
+    console.log(currentWeather, fiveDayForecast);
     data.key = key;
     data.name = name;
 
