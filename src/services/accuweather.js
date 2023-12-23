@@ -7,6 +7,12 @@ const http = axios.create({
   baseURL: "http://dataservice.accuweather.com",
 });
 
+// http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=c2E6KBkzu9C7naQIe5bWrFbSwi9S2vDp&q=tel%20aviv
+export const getLocationsUsingAutocomplete = (query) => {
+  const url = `/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${query}`;
+  return http.get(url).then((response) => response.data);
+};
+
 export const getWeatherForecastData = (key) => {
   const url = `/currentconditions/v1/${key}?details=true&apikey=${apiKey}`;
   return http.get(url).then((response) => response.data);

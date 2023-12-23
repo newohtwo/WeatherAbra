@@ -19,7 +19,7 @@ const Home = (props) => {
     name: null,
     isFavorite: false,
     weather: null,
-    weatherForcastFiveDaysArr: null,
+    weatherForecastFiveDaysArr: null,
   });
   const { favoriteKey , favoriteName } = useParams();
 
@@ -65,7 +65,7 @@ const Home = (props) => {
     console.log(data);
 
     //make here api call and fill the needed data into the state
-    setWeatherData((old) => {
+    setWeatherData(() => {
       return {
         ...data,
         isFavorite: checkIfExistsInStorage(key),
