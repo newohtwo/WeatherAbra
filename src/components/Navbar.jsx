@@ -1,11 +1,22 @@
+// @ts-nocheck
 // @ts-ignore
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "../../node_modules/react-router-dom/dist/index";
 import { changeToC, changeToF } from "../Redux/Actions/DegreesActions";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
 
+  
+  const degreesUnit = useSelector(state => state.degrees);
+  const dispatch = useDispatch();
+  const changeDegrees = () => {
+    console.log(degreesUnit)
+    if(degreesUnit){
+      dispatch(changeToF())
+    }else{
+      dispatch(changeToC())
+    }
+  }
   return (
     <div className="d-flex justify-content-between px-1">
       <div className="align-self-center">
@@ -13,10 +24,8 @@ const Navbar = () => {
       </div>
 
       <div>
-        <button onClick={() => dispatch(changeToC())}>Change to Celsius</button>
-        <button onClick={() => dispatch(changeToF())}>
-          Change to Fahrenheit
-        </button>
+        <button onClick={changeDegrees}>{degreesUnit ? "C*" : "F*"}</button>
+
       </div>
 
       <div className="align-self-center">
