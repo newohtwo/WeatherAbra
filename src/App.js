@@ -3,6 +3,8 @@ import { RouterConfig } from "./navigation/RouterConfig";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { searchData, getWeatherForecastFiveDays } from "./demoData/DemoData";
+import { Provider } from "react-redux";
+import { store } from "./Redux/Stores/DegreesStores";
 
 const App = () => {
   // Convert the array of objects to a JSON string
@@ -15,9 +17,11 @@ const App = () => {
 
   return (
     <>
-      <Layout>
-        <RouterConfig />
-      </Layout>
+      <Provider store = {store}>
+        <Layout>
+          <RouterConfig />
+        </Layout>
+      </Provider>
     </>
   );
 };
