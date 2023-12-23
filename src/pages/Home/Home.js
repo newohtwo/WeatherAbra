@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import Search from "../../components/Search.js";
 import WeatherInfo from "../../components/WeatherInfo";
+import {
+  getWeatherDataByKey,
+  getWeatherForecastData,
+} from "../../services/accuweather.js";
+import {
+  getWeatherForecastFiveDays,
+  getWeatherData,
+} from "../../demoData/DemoData.js";
 
 const Home = (props) => {
   const [weatherData, setWeatherData] = useState({
@@ -13,10 +21,14 @@ const Home = (props) => {
     //if has some quary data with key than make api call and set data to weather info
   }, []);
 
-  const getWeatherKey = (key, name) => {
+  const getWeatherKey = async (key, name) => {
     // make api call using the key
     let data = {};
-    console.log(key, name);
+    // const test = await getWeatherData();
+    // const weatherData = getWeatherData; //api call to get weather
+    // const weatherDataFiveDay = getWeatherForecastFiveDays; //api call to get forcast of that weather
+    // const { currentWeather, fiveDayForecast } = await getWeatherData(key);
+
     data.key = key;
     data.name = name;
 
@@ -24,8 +36,8 @@ const Home = (props) => {
     setWeatherData((old) => {
       return {
         ...old,
-        key: data.key,
-        name: data.name,
+        key: key,
+        name: name,
         isFavorite: checkIfExistsInStorage(),
       };
     });
@@ -43,8 +55,6 @@ const Home = (props) => {
       );
       if (exists) {
         return true;
-      } else {
-        return false;
       }
     }
   };
