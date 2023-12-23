@@ -16,11 +16,11 @@ const Home = (props) => {
     name: null,
     isFavorite: false,
     weather: null,
-    weatherForcastFiveDaysArr: null,
+    weatherForecastFiveDaysArr: null,
   });
 
   useEffect(() => {
-    //if has some quary data with key than make api call and set data to weather info
+    //if has some query data with key than make api call and set data to weather info
   }, []);
 
   const getWeatherKey = async (key, name) => {
@@ -29,20 +29,25 @@ const Home = (props) => {
     // const test = await getWeatherData();
     // const weatherData = getWeatherData; //api call to get weather
     // const weatherDataFiveDay = getWeatherForecastFiveDays; //api call to get forcast of that weather
-    // const { currentWeather, fiveDayForecast } = await getWeatherData(key);
-  
-    data.weather = getWeatherData[0];
-    data.weatherForcastFiveDaysArr = getWeatherForecastFiveDays.DailyForecasts;
+    const { currentWeather, fiveDayForecast } = await getWeatherDataByKey(key);
+
+    // api calls
+    console.log("Current weather:")
+    console.log(currentWeather[0]);
+    data.weather = currentWeather[0];
+    data.weatherForecastFiveDaysArr = fiveDayForecast;
     data.key = key;
     data.name = name;
 
     console.log(data);
 
     //make here api call and fill the needed data into the state
-    setWeatherData((old) => {
+    setWeatherData(() => {
       return {
         ...data,
-        isFavorite: checkIfExistsInStorage(),
+        weather: currentWeather,
+        weatherForecastFiveDaysArr: fiveDayForecast,
+        isFavorite: checkIfExistsInStorage(key),
       };
     });
   };

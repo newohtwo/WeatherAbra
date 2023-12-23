@@ -1,14 +1,20 @@
 import ForecastWeatherBlock from "./ForecastWeatherBlock";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuid4 } from "uuid";
 
 const WeatherInfo = ({ weatherData }) => {
-  const { weather,weatherForcastFiveDaysArr,key,name,isFavorite } = weatherData;
-  console.log(weatherForcastFiveDaysArr)
+  const { weather, weatherForcastFiveDaysArr, key, name, isFavorite } =
+    weatherData;
+  console.log("Here is weather data:")
+  console.log(weatherData);
+  console.log("Weather data over")
+
   return (
     <div className="border">
       <div className="">
         <div className="d-flex justify-content-between">
-          <div>{name}</div>
+          <div className="d-flex">
+            <h1>{name}</h1>
+          </div>
           <div className="d-flex align-self-center">
             {isFavorite ? (
               <img
@@ -27,13 +33,17 @@ const WeatherInfo = ({ weatherData }) => {
           </div>
         </div>
       </div>
-      <div className="">{weather.WeatherText}</div>
+      <div className="">
+        <h2>{weather.WeatherText} </h2>
+      </div>
       <div className="">
         <ul className="d-flex flex-wrap">
-        {weatherForcastFiveDaysArr.map((data) => {
-          const randomKey = uuidv4();
-          return (<ForecastWeatherBlock key = {randomKey} dailyForecast = {data}/>)
-        })}
+          {weatherForcastFiveDaysArr.map((data) => {
+            const randomKey = uuid4();
+            return (
+              <ForecastWeatherBlock key={randomKey} dailyForecast={data} />
+            );
+          })}
         </ul>
       </div>
     </div>

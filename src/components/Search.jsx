@@ -1,30 +1,37 @@
 import { useRef, useState } from "react";
 import { searchData } from "../demoData/DemoData";
+import { getLocationsUsingAutocomplete } from "../services/AccuWeather";
 const Search = ({ getWeatherKey }) => {
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropDownOptions, setDropDownOptions] = useState([]);
   const inputReference = useRef();
 
-  const handleInputChange = (event) => {
+  const handleInputChange = async (event) => {
     let value = event.target.value;
 
     //should check for special cherecters and such
-    if (value !== "") {
-      const arr = searchData.map((x) => {
+    if (value !== "" && value.length >= 7) {
+      // check for list of locations every 7 characters to not flood the API for now
+      // const listOfLocations = await getLocationsUsingAutocomplete(value);
+      const data = await getLocationsUsingAutocomplete(value);
+      console.log(data);
+      const listOfLocations = data.map((location) => {
         return (
           <li
-            key={x.Key}
-            onClick={() => handleDropdownItemClick(x.Key, x.LocalizedName)}
+            key={location.Key}
+            onClick={() =>
+              handleDropdownItemClick(location.Key, location.LocalizedName)
+            }
           >
             <span style={{ width: "100%" }}>
-              {x.LocalizedName + ", " + x.Country.LocalizedName}
+              {location.LocalizedName + ", " + location.Country.LocalizedName}
             </span>
           </li>
         );
       });
 
-      setDropDownOptions(arr);
+      setDropDownOptions(listOfLocations);
     } else {
       setDropDownOptions([]);
     }

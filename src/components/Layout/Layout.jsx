@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
         <Navbar />
       </div>
 
-      <div className="content p-0 m-0">{children}</div>
+      <div className="content p-0 m-0 overflow-auto">{children}</div>
 
       <div className="row footer p-0 m-0">
         <Footer />
