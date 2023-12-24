@@ -15,3 +15,13 @@
     background-color: #333;
     color: #fff;
 }
+
+.dark-mode > .content{
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode > .navbar{
+    background-color: #333;
+    color: #fff;
+}

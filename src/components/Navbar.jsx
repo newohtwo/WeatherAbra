@@ -7,8 +7,10 @@ import { changeToC, changeToF } from "../Redux/Actions/DegreesActions";
 const Navbar = () => {
 
   
-  const degreesUnit = useSelector(state => state.degrees);
+  const degreesUnit = useSelector(state => state.toggle.degrees);
   const dispatch = useDispatch();
+
+  console.log(degreesUnit);
 
   const changeDegrees = () => {
     // console.log(degreesUnit)

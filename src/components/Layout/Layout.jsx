@@ -6,7 +6,7 @@ import { toggleDarkMode } from "../../Redux/Actions/DarkModeActions";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
-  const darkMode = useSelector((state) => state.darkMode);
+  const darkMode = useSelector(state => state.darkMode.darkMode);
   console.log('Dark mode is:' + darkMode);
 
   return (

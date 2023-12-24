@@ -38,7 +38,7 @@ const Home = (props) => {
       data.name = name;
 
       //make here api call and fill the needed data into the state
-      setWeatherData((old) => {
+      setWeatherData(() => {
         return {
           ...data,
           isFavorite: checkIfExistsInStorage(key),

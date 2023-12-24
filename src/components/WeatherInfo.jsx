@@ -46,7 +46,7 @@ const WeatherInfo = ({ weatherData }) => {
                
               />
             )}
-            <button onClick={addToFavorites} className="m-2">add to favorites</button>
+            <button onClick={addToFavorites} className="m-2">Add to favorites</button>
           </div>
         </div>
       </div>

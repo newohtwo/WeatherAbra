@@ -2,7 +2,7 @@ export const initialState = {
   darkMode: false,
 };
 
-const rootReducer = (state = initialState, action) => {
+export const darkModeReducer = (state = initialState, action) => {
   switch (action.type) {
     case "TOGGLE_DARK_MODE":
       return { ...state, darkMode: !state.darkMode };
@@ -10,5 +10,3 @@ const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default rootReducer;
